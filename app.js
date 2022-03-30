@@ -102,7 +102,6 @@ const addLetter = (letter) => {
         guessRows[currentRow][currentTile] = letter
         tile.setAttribute('data', letter)
         currentTile++
-        console.log('guessRows', guessRows)
     }
 }
 
