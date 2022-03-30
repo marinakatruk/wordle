@@ -77,23 +77,22 @@ keys.forEach(key => {
     const buttonElement = document.createElement('button')
     buttonElement.textContent = key
     buttonElement.setAttribute('id', key)
-    buttonElement.addEventListener('click', () => keyListener(key))
+    buttonElement.addEventListener('click', () => pressKey(key))
     keyboard.append(buttonElement)
 })
 
-const keyListener = (key) => {
-    console.log('clicked!', key)
-    if (key === '≪') {
-        deleteLetter()
-        console.log('guessRows', guessRows)
-        return
+const pressKey = (key) => {
+    if (!isGameOver) {
+        if (key === '≪') {
+            deleteLetter()
+            return
+        }
+        if (key === 'ENTER') {
+            checkRow()
+            return
+        }
+        addLetter(key)
     }
-    if (key === 'ENTER') {
-        checkRow()
-        console.log('guessRows', guessRows)
-        return
-    }
-    addLetter(key)
 }
 
 const addLetter = (letter) => {
